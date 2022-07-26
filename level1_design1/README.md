@@ -8,6 +8,7 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. 
 
+## Test 1 (Sequential test for all valid inputs)
 Values form 0 to 31 (inclusive) are applied on the `sel` while the respective `inp` = 1 i.e. set to active and the others are by default set to 0
  
  Code:
@@ -26,13 +27,23 @@ The `if` statement is used for comparing the adder's outut to the expected value
     dut._log.info(f'ERROR: ...')
 
  ```
+## Test 1 (Invalid sel (select) input)
+
+Value -3 was chosen as it translates to 1101 which out equal to inp29 in the mux design
 
 ## Captured Bugs
 
+## Test 1
+
 ![](../imgs/level1_design1_mux_bugs.png)
 
+## Test 2
+
+![](../imgs/level1_design1_mux_invalid_ip.png)
 
 ## Test Scenario
+
+## Test 1
 ### Scenario 1
 - Test Inputs: inp12 = 1, sel = 12
 - Expected Output: out = 1
@@ -42,6 +53,12 @@ The `if` statement is used for comparing the adder's outut to the expected value
 
 - Test Inputs: inp30 = 1, sel = 20
 - Expected Output: out = 1
+- Observed Output in the DUT dut.out=0
+
+## Test 2
+
+- Test Inputs: inp{xx} = x, sel = -3
+- Expected Output: out = 0
 - Observed Output in the DUT dut.out=0
 
 ## Design Bug
@@ -129,7 +146,7 @@ Updating the design and re-running the test makes the test pass.
     endcase
   end
 ```
-
+### Passed Test
 ![](../imgs/level1_design1_mux_fixed.png)
 
 ## Verification Strategy
