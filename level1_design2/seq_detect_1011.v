@@ -39,34 +39,34 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
       IDLE:
       begin
         if(inp_bit == 1)
-          next_state = SEQ_1;
+          next_state = SEQ_1; // 1
         else
-          next_state = IDLE;
+          next_state = IDLE; // 0
       end
       SEQ_1:
       begin
-        if(inp_bit == 1)
-          next_state = IDLE;
+        if(inp_bit == 1) // <==== Bug, shd be 0
+          next_state = IDLE; // 11
         else
-          next_state = SEQ_10;
+          next_state = SEQ_10; //10
       end
       SEQ_10:
       begin
         if(inp_bit == 1)
-          next_state = SEQ_101;
+          next_state = SEQ_101; // 101
         else
-          next_state = IDLE;
+          next_state = IDLE; // 100
       end
       SEQ_101:
       begin
         if(inp_bit == 1)
-          next_state = SEQ_1011;
+          next_state = SEQ_1011; //1011
         else
-          next_state = IDLE;
+          next_state = IDLE; //1010  <==== Bug, next_state shd be SEQ_10 
       end
       SEQ_1011:
       begin
-        next_state = IDLE;
+        next_state = IDLE; // 1011 detected back to idle
       end
     endcase
   end
