@@ -157,3 +157,6 @@ Loop was run to give i/p to the `sel` using iterator `i` while the respective ac
 
 Hence the each and every of the `inpxx` signals were tested with the respective `sel` signals and the `if out == inpxx` was checked.
 
+## Is the verification complete ?
+
+The verification is complete as the valid as well as invalid inputs have been tested against as well as the design has `default: out = 0;` for recovery from unknown cases also the `sensitivity list` has `sel` line only, as it as cobinational (which remove the cases of delayed outputs and states to an extent) design it can be claimed that the verification is indeed complete.
