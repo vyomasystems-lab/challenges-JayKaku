@@ -24,3 +24,13 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
+
+    inp = [1,1,1,0,1,1]
+
+    for i in inp:
+        dut.inp_bit.value = 1
+        dut._log.info(f'inp_bit={int(dut.inp_bit.value)} seq_seen={int(dut.seq_seen.value):02}')
+
+    
+
+    
