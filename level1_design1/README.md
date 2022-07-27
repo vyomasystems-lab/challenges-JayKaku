@@ -27,9 +27,11 @@ The `if` statement is used for comparing the adder's outut to the expected value
     dut._log.info(f'ERROR: ...')
 
  ```
-## Test 1 (Invalid sel (select) input)
+## Test 2 (Invalid sel (select) input)
 
 Value -3 was chosen as it translates to 1101 which out equal to inp29 in the mux design
+
+Note: Verilog takes input of the negative numbers in two's complement form and hence -3 translates to 29
 
 ## Captured Bugs
 
@@ -40,6 +42,8 @@ Value -3 was chosen as it translates to 1101 which out equal to inp29 in the mux
 ## Test 2
 
 ![](../imgs/level1_design1_mux_invalid_ip.png)
+
+Note: Verilog takes input of the negative numbers in two's complement form and hence -3 translates to 29
 
 ## Test Scenario
 
@@ -60,6 +64,8 @@ Value -3 was chosen as it translates to 1101 which out equal to inp29 in the mux
 - Test Inputs: inp{xx} = x, sel = -3
 - Expected Output: out = 0
 - Observed Output in the DUT dut.out=0
+
+Note: Verilog takes input of the negative numbers in two's complement form and hence -3 translates to 29
 
 ## Design Bug
 Based on the above test input and analysing the design, we see the following
