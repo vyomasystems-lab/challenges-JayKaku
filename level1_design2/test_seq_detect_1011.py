@@ -5,6 +5,7 @@
 import os
 import random
 from pathlib import Path
+from cocotb.triggers import Timer
 
 import cocotb
 from cocotb.clock import Clock
@@ -25,11 +26,12 @@ async def test_seq_bug1(dut):
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
 
-    inp = [1,1,1,0,1,1]
+    inp = [1,1,1,0,1,1,1,1]
 
     for i in inp:
-        dut.inp_bit.value = 1
-        dut._log.info(f'inp_bit={int(dut.inp_bit.value)} seq_seen={int(dut.seq_seen.value):02}')
+        dut.inp_bit.value = i
+        await Timer(10, units='us')
+        dut._log.info(f'clk={int(dut.clk.value)} rstn={int(dut.reset.value)} inp_bit={int(dut.inp_bit.value)} seq_seen={int(dut.seq_seen.value):02}')
 
     
 

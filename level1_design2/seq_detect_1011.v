@@ -45,7 +45,7 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
       end
       SEQ_1:
       begin
-        if(inp_bit == 1) // <==== Bug, shd be 0
+        if(inp_bit == 1) // <==== not a bug but discover more
           next_state = IDLE; // 11
         else
           next_state = SEQ_10; //10
@@ -62,12 +62,13 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
         if(inp_bit == 1)
           next_state = SEQ_1011; //1011
         else
-          next_state = IDLE; //1010  <==== Bug, next_state shd be SEQ_10 
+          next_state = SEQ_10; //1010  <==== Bug, next_state shd be SEQ_10 
       end
       SEQ_1011:
       begin
         next_state = IDLE; // 1011 detected back to idle
       end
+      //<=== BUG: missing default case ===> desing case with z or x value for it
     endcase
   end
 endmodule
