@@ -68,7 +68,7 @@ async def test_invalid_ip_bug(dut):
     await Timer(10, units='us')
     
     # to verify z or x edge case logic for SEQ_1 if else bug 
-    inp = [1,1,1,cocotb.types.Logic("Z"),1,1,1,1]
+    inp = [1,1,1,cocotb.binary.BinaryValue("Z"),1,1,1,1]
 
     string=""
     seen_count = 0
