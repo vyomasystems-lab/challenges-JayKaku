@@ -35,7 +35,7 @@ Note: Verilog takes input of the negative numbers in two's complement form and h
 
 ## Captured Bugs
 
-## Test 1
+## Test 1 (Bugs found 2)
 
 ![](../imgs/level1_design1_mux_bugs.png)
 
