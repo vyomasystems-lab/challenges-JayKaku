@@ -26,7 +26,15 @@ async def test_seq_bug1(dut):
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
 
-    inp = [1,1,1,0,1,1,1,1]
+    # to check for non-sequence overlap
+    # inp = [1,1,1,0,1,1,1,1]
+    
+    # to verify z or x edge case logic for SEQ_1 if else bug 
+    inp = [1,1,1,cocotb.types.Logic("Z"),1,1,1,1]
+
+    
+    # to expose the 1010 state change bug where the pattern doesn't get recognized in the og design
+    #inp = [1,0,1,0,1,1,1,1]
     string=""
 
     for i in inp:
