@@ -34,13 +34,16 @@ def run_test(dut):
 
     ######### CTB : Modify the test to expose the bug #############
     # input transaction
-    mav_putvalue_src1 = 0xffff
+    mav_putvalue_src1 = 0x0000ffff
     mav_putvalue_src2 = 0xffff0000
     mav_putvalue_src3 = 0x0
-    mav_putvalue_instr = 0x010B3
+    mav_putvalue_instr = 0x10B3
     # mav_putvalue_instr = 0x101010B3 
-    # func7<-(0001 000)0 0001 0000 | 0(001)->func3 0000 1(011 0011)->b3 prolly
-
+    # failed at 0x101010B3, 10B3 
+    # func7<-(0001 000)0 0001 0000 | 0(001)->func3 0000 1(011 0011)->b3 SLD I (3,4)
+    dut._log.info(f'src1={hex(mav_putvalue_src1)}')
+    dut._log.info(f'src2={hex(mav_putvalue_src2)}')
+    dut._log.info(f'src3={hex(mav_putvalue_src3)}')
     dut._log.info(f'inst={hex(mav_putvalue_instr)}')
 
     # expected output from the model
