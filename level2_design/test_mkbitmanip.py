@@ -37,7 +37,7 @@ def run_test(dut):
     mav_putvalue_src1 = 0x0000ffff
     mav_putvalue_src2 = 0xffff0000
     mav_putvalue_src3 = 0x0
-    mav_putvalue_instr = 0x10B3
+    mav_putvalue_instr = 0x400070B3
     # mav_putvalue_instr = 0x101010B3 
     # failed at 0x101010B3, 10B3 
     # func7<-(0001 000)0 0001 0000 | 0(001)->func3 0000 1(011 0011)->b3 SLD I (3,4)
