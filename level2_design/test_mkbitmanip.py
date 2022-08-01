@@ -34,10 +34,14 @@ def run_test(dut):
 
     ######### CTB : Modify the test to expose the bug #############
     # input transaction
-    mav_putvalue_src1 = 0x5
-    mav_putvalue_src2 = 0x0
+    mav_putvalue_src1 = 0xffff
+    mav_putvalue_src2 = 0xffff0000
     mav_putvalue_src3 = 0x0
-    mav_putvalue_instr = 0x101010B3
+    mav_putvalue_instr = 0x010B3
+    # mav_putvalue_instr = 0x101010B3 
+    # func7<-(0001 000)0 0001 0000 | 0(001)->func3 0000 1(011 0011)->b3 prolly
+
+    dut._log.info(f'inst={hex(mav_putvalue_instr)}')
 
     # expected output from the model
     expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
